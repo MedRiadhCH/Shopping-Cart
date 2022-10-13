@@ -1,13 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
+import { CartContext } from "./CartContextProvider";
+
 
 const Tshirt = ({ name, price, cle }) => {
-
-    const addTOCart=() => {
-        console.log("click")
-    }
+  const [cart,setCart]=useContext(CartContext)
+  const addTOCart = () => {
+    const tshirt={name:name,price:price}
+    setCart([...cart,tshirt])
+  };
   return (
     <>
-      <tr >
+      <tr key={cle}>
         <td>{name}</td>
         <td>{price}</td>
         <td>
